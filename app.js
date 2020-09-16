@@ -11,7 +11,7 @@ app.get('/apps', (req, res) => {
     let results = [ ...apps ]
 
     if (sort && sort !== 'Rating' && sort !== 'App')
-        return res.status(400).json({ message: "Sort must be one of 'rating' or 'app'"})
+        return res.status(400).json({ message: "Sort must be one of 'Rating' or 'App'"})
     
     if (sort) {
         results.sort((currentApp, nextApp) => {
@@ -25,7 +25,7 @@ app.get('/apps', (req, res) => {
         })
     }
 
-    const validGenres = ['Action', 'Puzzle', 'Strategy', 'Casual', 'Arcade', 'Card']
+    const validGenres = ['Action', 'Puzzle', 'Strategy', 'Casual', 'Arcade', 'Card'];
     console.log(genres)
     if (genres && !validGenres.includes(genres)) {
         return res.status(400).json({ message: "Genres must be one of 'Action', 'Puzzle', 'Strategy', 'Casual', 'Arcade', or 'Card'"})
@@ -37,6 +37,4 @@ app.get('/apps', (req, res) => {
     res.json(results)
 }); 
 
-app.listen(8000, () => {
-    console.log('Server started on PORT 8000')
-});
+module.exports = app 
